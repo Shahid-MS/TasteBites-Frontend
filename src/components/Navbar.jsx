@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "/images/TasteBites_name.png";
 import { MdOutlineAddIcCall } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isSticky, setSticky] = useState(false);
@@ -23,14 +24,14 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
         <details>
           <summary>Menu</summary>
           <ul className="p-2">
             <li>
-              <a>All</a>
+              <Link to="/menu">All</Link>
             </li>
             <li>
               <a>Pizza</a>

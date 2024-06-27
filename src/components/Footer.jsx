@@ -6,7 +6,7 @@ const Footer = () => {
       <footer className="footer lg:px-24 px-4 py-16 text-base-content bg-base-200">
         <aside>
           <img
-            src="/public/images/TasteBites_full.png"
+            src="/images/TasteBites_full.png"
             alt=""
             className="w-1/2"
           />

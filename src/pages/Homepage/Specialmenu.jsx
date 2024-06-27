@@ -18,7 +18,7 @@ const Specialmenu = () => {
       });
   }, []);
 
-  const next = (props) => {
+  const NextArrow = (props) => {
     const { className, style, onClick } = props;
 
     return (
@@ -32,7 +32,7 @@ const Specialmenu = () => {
     );
   };
 
-  const prev = (props) => {
+  const PrevArrow = (props) => {
     const { className, style, onClick } = props;
 
     return (
@@ -73,8 +73,8 @@ const Specialmenu = () => {
       },
     ],
 
-    nextArrow: <next />,
-    prevArrow: <prev />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   return (
