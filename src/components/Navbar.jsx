@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "/images/TasteBites_name.png";
-import { MdOutlineAddIcCall } from "react-icons/md";
+
 import { Link } from "react-router-dom";
+import { FaRegUser } from "react-icons/fa";
+import LoginModal from "./LoginModal";
+import { navItems } from "./Helper";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const [isSticky, setSticky] = useState(false);
 
   useEffect(() => {
@@ -21,58 +27,11 @@ const Navbar = () => {
     };
   }, []);
 
-  const navItems = (
-    <>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <details>
-          <summary>Menu</summary>
-          <ul className="p-2">
-            <li>
-              <Link to="/menu">All</Link>
-            </li>
-            <li>
-              <a>Pizza</a>
-            </li>
-            <li>
-              <a>Biryani</a>
-            </li>
-          </ul>
-        </details>
-      </li>
-
-      <li>
-        <details>
-          <summary>Services</summary>
-          <ul className="p-2">
-            <li>
-              <a>Delivery</a>
-            </li>
-            <li>
-              <a>Book Table</a>
-            </li>
-            <li>
-              <a>Order Track</a>
-            </li>
-          </ul>
-        </details>
-      </li>
-
-      <li>
-        <a>Offers</a>
-      </li>
-    </>
-  );
-
   return (
     <header className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0">
       <div
         className={`navbar xl:px-24 xl:py-5  bg-base-100  ${
-          isSticky
-            ? "shadow-md transition-all duration-300 ease-in-out"
-            : ""
+          isSticky ? "shadow-md transition-all duration-300 ease-in-out" : ""
         }`}
       >
         <div className="navbar-start">
@@ -110,7 +69,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {/* search */}
-          <button className="btn btn-ghost btn-circle">
+          <button className="btn btn-ghost btn-circle hidden md:flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -130,7 +89,7 @@ const Navbar = () => {
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost btn-circle mr-3"
+            className="btn btn-ghost btn-circle mr-3 hidden md:flex"
           >
             <div className="indicator">
               <svg
@@ -151,12 +110,18 @@ const Navbar = () => {
             </div>
           </div>
 
-          <a className="btn bg-green rounded-full px-6 text-white items-center gap-2 hidden md:flex">
-            <MdOutlineAddIcCall />
-            Contact
-          </a>
+          {/* login */}
+          <button
+            className="btn bg-green rounded-full px-6 text-white items-center gap-2 "
+            onClick={() => document.getElementById("login_modal").showModal()}
+          >
+            <FaRegUser />
+            Login
+          </button>
         </div>
       </div>
+
+      <LoginModal />
     </header>
   );
 };
